@@ -20,6 +20,30 @@ require("gruvbox").setup {
   dim_inactive = false,
   transparent_mode = false,
 }
+--
+
+-- require('lspconfig').pylsp.setup{
+--    settings = {
+--        pylsp = {
+--            plugins = {configurationSources = {'flake8'},
+--                  pycodestyle = {enabled = false},
+--                  mccabe = {enabled = false},
+--                  pyflakes = {enabled = false},
+--                  flake8 = {enabled = true}
+--             }
+--         }
+--     }
+-- }
+--
+require('ruscmd').setup{
+  -- provide ex-command abbreviation
+  -- example: ':й' -> ':q'
+  abbreviations = true, -- default true
+
+  -- provide NORMAL-mode translation
+  -- example: 'ц' -> 'w'
+  keymaps = true, -- default true
+}
 
 local config = {
 
@@ -56,6 +80,8 @@ local config = {
     -- },
   },
 
+
+
   -- set vim options here (vim.<first_key>.<second_key> = value)
   options = {
     opt = {
@@ -63,7 +89,7 @@ local config = {
       relativenumber = true, -- sets vim.opt.relativenumber
       number = true, -- sets vim.opt.number
       spell = false, -- sets vim.opt.spell
-      signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+      signcolumn = "yes", -- sets vim.opt.signcolumn to auto
       wrap = false, -- sets vim.opt.wrap
     },
     g = {
@@ -240,9 +266,10 @@ local config = {
       -- ["goolord/alpha-nvim"] = { disable = true },
         -- "morhetz/gruvbox",
         "ellisonleao/gruvbox.nvim",
-      -- You can also add new plugins here as well:
+              -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
+      { "aveplen/ruscmd.nvim" },
       -- {
       --   "ray-x/lsp_signature.nvim",
       --   event = "BufRead",
