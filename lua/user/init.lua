@@ -252,6 +252,9 @@ local config = {
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+      ["<leader>rr"] = { ":term venv/bin/python3 '%'<cr>", desc = "Run python file"},
+      ["<leader>rc"] = { ":bd!<cr>", desc = "Close buffer without save"},
+      ["<leader>rs"] = { ":vsp", desc = "Vertical split buffer"},
     },
     t = {
       -- setting a mapping to false will disable it
