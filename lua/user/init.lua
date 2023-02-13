@@ -45,7 +45,11 @@ require('ruscmd').setup{
   keymaps = true, -- default true
 }
 
+
+
 local config = {
+
+
 
   -- Configure AstroNvim updates
   updater = {
@@ -91,6 +95,12 @@ local config = {
       spell = false, -- sets vim.opt.spell
       signcolumn = "yes", -- sets vim.opt.signcolumn to auto
       wrap = false, -- sets vim.opt.wrap
+      tabstop = 4, -- Number of space in a tab
+      shiftwidth = 4, -- Number of space inserted for indentation
+      smarttab = true, 
+      expandtab = true, -- Enable the use of space in tab
+      copyindent = true 
+
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
@@ -221,6 +231,17 @@ local config = {
 
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
+    	pylsp = {
+  	      settings = {
+    	    pylsp = {
+             plugins = {
+               pycodestyle = {
+                 maxLineLength = 120
+        }
+      }
+    }
+  }
+}
       -- example for addings schemas to yamlls
       -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
       --   settings = {
