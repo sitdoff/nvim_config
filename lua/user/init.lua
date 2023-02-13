@@ -236,7 +236,8 @@ local config = {
     	    pylsp = {
              plugins = {
                pycodestyle = {
-                 maxLineLength = 120
+                 maxLineLength = 120,
+                 ignore = {'W293'}
         }
       }
     }
