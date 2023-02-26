@@ -294,7 +294,8 @@ local config = {
               -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
-      { "aveplen/ruscmd.nvim" },
+        { "aveplen/ruscmd.nvim" },
+        { "iamcco/markdown-preview.nvim" },
       -- {
       --   "ray-x/lsp_signature.nvim",
       --   event = "BufRead",
