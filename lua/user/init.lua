@@ -109,7 +109,7 @@ local config = {
       autopairs_enabled = true, -- enable autopairs at start
       diagnostics_enabled = true, -- enable diagnostics at start
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
-      icons_enabled = false, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+      icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
       ui_notifications_enabled = true, -- disable notifications when toggling UI elements
       heirline_bufferline = false, -- enable new heirline based bufferline (requires :PackerSync after changing)
     },
@@ -162,7 +162,7 @@ local config = {
     -- enable or disable highlighting for extra plugins
     plugins = {
       aerial = true,
-      beacon = false,
+      beacon = true,
       bufferline = true,
       cmp = true,
       dashboard = true,
@@ -347,6 +347,8 @@ local config = {
   luasnip = {
     -- Extend filetypes
     filetype_extend = {
+        htmldjango = { "html" },
+        html = { 'htmldjango' },
       -- javascript = { "javascriptreact" },
     },
     -- Configure luasnip loaders (vscode, lua, and/or snipmate)
