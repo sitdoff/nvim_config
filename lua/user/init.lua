@@ -1,3 +1,4 @@
+-- https://github.com/AstroNvim/AstroNvim/blob/f7d87bf55afaacc0a187b14da5b85d5da79d82be/lua/user_example/init.lua
  -- All configuration changes should go inside of the table below
 
 -- You can think of a Lua "table" as a dictionary like data structure the
@@ -99,7 +100,9 @@ local config = {
       shiftwidth = 4, -- Number of space inserted for indentation
       smarttab = true, 
       expandtab = true, -- Enable the use of space in tab
-      copyindent = true 
+      copyindent = true, 
+      foldenable = false,
+      -- foldopen='all',
 
     },
     g = {
@@ -276,7 +279,7 @@ local config = {
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
       ["<leader>rr"] = { ":term venv/bin/python3 '%'<cr>", desc = "Run python file"},
       ["<leader>rc"] = { ":bd!<cr>", desc = "Close buffer without save"},
-      ["<leader>rs"] = { ":vsp", desc = "Vertical split buffer"},
+      ["<leader>rs"] = { ":vsp<cr>", desc = "Vertical split buffer"},
     },
     t = {
       -- setting a mapping to false will disable it
@@ -347,8 +350,8 @@ local config = {
   luasnip = {
     -- Extend filetypes
     filetype_extend = {
-        htmldjango = { "html" },
-        html = { 'htmldjango' },
+        -- htmldjango = { "html" },
+        html = { "htmldjango" },
       -- javascript = { "javascriptreact" },
     },
     -- Configure luasnip loaders (vscode, lua, and/or snipmate)
@@ -419,6 +422,23 @@ local config = {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+    vim.opt.foldmethod = 'expr'
+    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+    -- autocmd autocmd BufWinLeave *.* mkview
+    vim.api.nvim_create_augroup("folding", {})
+    vim.api.nvim_create_autocmd("BufWinLeave", {
+        desc = "Save fold",
+        group = "folding",
+        pattern = "*.*",
+        command = "mkview",
+    })
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+        desc = "Load fold",
+        group = "folding",
+        pattern = "*.*",
+        command = "silent! loadview",
+    })
+    -- autocmd BufWinEnter *.* silent loadview
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
