@@ -438,6 +438,13 @@ local config = {
         pattern = "*.*",
         command = "silent! loadview",
     })
+    vim.api.nvim_create_augroup("filetype", {})
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+        desc = "Change filetype html -> htmldjango",
+        group = "filetype",
+        pattern = "*.html",
+        command = "set filetype=htmldjango",
+    })
     -- autocmd BufWinEnter *.* silent loadview
     -- Set up custom filetypes
     -- vim.filetype.add {
