@@ -49,6 +49,9 @@ return require('packer').startup(function(use)
       	require("plugins_configs/bufferline")
   end, }
 
+  -- Нормальное закрывание табов
+  use 'famiu/bufdelete.nvim'
+
   -- Структура классов и функций в файле
   use 'majutsushi/tagbar'
   -- Файловый менеджер
@@ -96,6 +99,14 @@ return require('packer').startup(function(use)
 
   -- Сплиты
   use {'mrjones2014/smart-splits.nvim'}
+
+  -- Терминал
+  use {"akinsho/toggleterm.nvim", 
+      tag = '*', 
+      config = function()
+        require("toggleterm").setup()
+      end
+    }
   ---------------------------------------------------------
   -- ПОИСК
   ---------------------------------------------------------

@@ -25,7 +25,8 @@ vim.keymap.set('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
 vim.keymap.set('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
 vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
 vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
-
+-- для терминала
+vim.keymap.set('t', '<C-[>', [[<Cmd>wincmd h<CR>]], opts)
 -----------------------------------------------------------
 -- РЕЖИМЫ
 -----------------------------------------------------------
@@ -50,5 +51,6 @@ map('n', '<F8>', ':TagbarToggle<CR>', default_opts)
 -- <F4> Дерево файлов. Для иконок следует установить Nerd Font
 map('n', '<leader>e', ':Neotree toggle<CR>', default_opts)
 -----------------------------------------------------------
--- ПЕРЕКЛЮЧЕНИЕ МЕЖДУ СПЛИТАМИ
+-- УПРАВЛЕНИЕ БУФЕРАМИ 
 -----------------------------------------------------------
+map('n', '<leader>c', ':Bdelete<CR>', default_opts)
