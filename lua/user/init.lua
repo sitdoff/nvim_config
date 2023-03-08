@@ -238,6 +238,14 @@ local config = {
   	      settings = {
     	    pylsp = {
              plugins = {
+               rope_autoimport = {
+                 enabled = true,
+                 memory = true,
+        },
+               rope_completion = {
+                 enabled = true,
+                 eager = false,
+        },
                pycodestyle = {
                  maxLineLength = 120,
                  ignore = {'W293'}
@@ -299,6 +307,7 @@ local config = {
       -- { "andweeb/presence.nvim" },
         { "aveplen/ruscmd.nvim" },
         { "iamcco/markdown-preview.nvim" },
+      -- { 'mfussenegger/nvim-dap-python' },
       -- {
       --   "ray-x/lsp_signature.nvim",
       --   event = "BufRead",
