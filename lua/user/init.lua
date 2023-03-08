@@ -4,23 +4,23 @@
 -- You can think of a Lua "table" as a dictionary like data structure the
 -- normal format is "key = value". These also handle array like data structures
 -- where a value with no key simply has an implicit numeric key
-require("gruvbox").setup {
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = false,
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "hard", -- can be "hard", "soft" or empty string
-  palette_overrides = {},
-  overrides = {},
-  dim_inactive = false,
-  transparent_mode = false,
-}
+-- require("gruvbox").setup {
+--   undercurl = true,
+--   underline = true,
+--   bold = true,
+--   italic = false,
+--   strikethrough = true,
+--   invert_selection = false,
+--   invert_signs = false,
+--   invert_tabline = false,
+--   invert_intend_guides = false,
+--   inverse = true, -- invert background for search, diffs, statuslines and errors
+--   contrast = "hard", -- can be "hard", "soft" or empty string
+--   palette_overrides = {},
+--   overrides = {},
+--   dim_inactive = false,
+--   transparent_mode = false,
+-- }
 --
 
 -- require('lspconfig').pylsp.setup{
@@ -36,15 +36,15 @@ require("gruvbox").setup {
 --     }
 -- }
 --
-require('ruscmd').setup{
-  -- provide ex-command abbreviation
-  -- example: ':й' -> ':q'
-  abbreviations = true, -- default true
-
-  -- provide NORMAL-mode translation
-  -- example: 'ц' -> 'w'
-  keymaps = true, -- default true
-}
+-- require('ruscmd').setup{
+--   -- provide ex-command abbreviation
+--   -- example: ':й' -> ':q'
+--   abbreviations = true, -- default true
+--
+--   -- provide NORMAL-mode translation
+--   -- example: 'ц' -> 'w'
+--   keymaps = true, -- default true
+-- }
 
 
 
@@ -301,7 +301,10 @@ local config = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
         -- "morhetz/gruvbox",
-        "ellisonleao/gruvbox.nvim",
+        {"ellisonleao/gruvbox.nvim",
+        config = function()
+            require('gruvbox').setup()
+        end},
               -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
