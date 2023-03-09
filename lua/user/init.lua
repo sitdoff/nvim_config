@@ -287,7 +287,7 @@ local config = {
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
       ["<leader>rr"] = { ":term venv/bin/python3 '%'<cr>", desc = "Run python file"},
       ["<leader>rc"] = { ":bd!<cr>", desc = "Close buffer without save"},
-      ["<leader>rs"] = { ":vsp<cr>", desc = "Vertical split buffer"},
+      ["<leader>rs"] = { ":ToggleTerm size=60 direction=vertical<cr>", desc = "Open terminal"},
     },
     t = {
       -- setting a mapping to false will disable it
