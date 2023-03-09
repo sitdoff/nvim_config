@@ -6,8 +6,8 @@ vim.g.mapleader = ' '
 -- НАВИГАЦИЯ
 -----------------------------------------------------------
 -- Переключение вкладок
-map('n', '<S-l>', ':BufferLineCycleNext<CR>', default_opts)
-map('n', '<S-h>', ':BufferLineCyclePrev<CR>', default_opts)
+vim.api.nvim_set_keymap('n', '<S-l>', ':BufferLineCycleNext<CR>', default_opts)
+vim.api.nvim_set_keymap('n', '<S-h>', ':BufferLineCyclePrev<CR>', default_opts)
 -- resizing splits
 -- these keymaps will also accept a range,
 -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
@@ -37,20 +37,22 @@ vim.keymap.set('t', '<C-[>', [[<Cmd>wincmd h<CR>]], opts)
 -- Выключить подсветку поиска через комбинацию ,+<space>
 --map('n', ',<space>', ':nohlsearch<CR>', {noremap = true})
 -- Fuzzy Search. CTRL+a для поиска по файлам, CTRL+p для поиска по буфферам
-map('n', '<C-a>', [[ <cmd>lua require('telescope.builtin').find_files()<cr> ]], default_opts)
-map('n', '<C-p>', [[ <cmd>lua require('telescope.builtin').buffers()<cr> ]], default_opts)
+vim.api.nvim_set_keymap('n', '<C-a>', [[ <cmd>lua require('telescope.builtin').find_files()<cr> ]], default_opts)
+vim.api.nvim_set_keymap('n', '<C-p>', [[ <cmd>lua require('telescope.builtin').buffers()<cr> ]], default_opts)
 -- <S-F5> Греповский поиск слова под курсором
-map('n', '<S-F5>', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], default_opts)
+vim.api.nvim_set_keymap('n', '<S-F5>', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], default_opts)
 -- <S-F4> Греповский поиск слова в модальном окошке
-map('n', '<S-F4>', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
+vim.api.nvim_set_keymap('n', '<S-F4>', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
 -----------------------------------------------------------
 -- ФАЙЛЫ
 -----------------------------------------------------------
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
-map('n', '<F8>', ':TagbarToggle<CR>', default_opts)
--- <F4> Дерево файлов. Для иконок следует установить Nerd Font
-map('n', '<leader>e', ':Neotree toggle<CR>', default_opts)
+vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', default_opts)
+-- Дерево файлов. Для иконок следует установить Nerd Font
+vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree toggle<CR>', default_opts)
 -----------------------------------------------------------
--- УПРАВЛЕНИЕ БУФЕРАМИ 
+-- УПРАВЛЕНИЕ БУФЕРАМИ И СПЛИТАМИ
 -----------------------------------------------------------
-map('n', '<leader>c', ':Bdelete<CR>', default_opts)
+vim.api.nvim_set_keymap('n', '<leader>c', ':Bdelete<CR>', default_opts)
+vim.api.nvim_set_keymap('n', '<leader>rc', ':close<CR>', default_opts)
+vim.api.nvim_set_keymap('n', '<leader>rs', ':ToggleTerm size=50 direction=vertical<CR>', default_opts)

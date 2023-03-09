@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- Парсеры, которые мы собираемся использовать
-  ensure_installed = { "lua", "python", "javascript", "typescript"},
+  ensure_installed = { "lua", "python", "javascript", "typescript", "html", "htmldjango"},
 
   sync_install = false,
 
