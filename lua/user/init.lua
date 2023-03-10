@@ -217,6 +217,13 @@ local config = {
 
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
+      pyright = {
+        settings = {
+          flake8 = {
+            maxLineLength = 120,
+          },
+        },
+      },
       pylsp = {
         settings = {
           pylsp = {
@@ -334,7 +341,7 @@ local config = {
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
-      ensure_installed = { "prettier", "prettierd", "stylua", "flake8", "black", "djlint" },
+      ensure_installed = { "prettier", "prettierd", "stylua", "flake8", "black", "djlint", "isort" },
     },
     ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
       ensure_installed = { "python", "debugpy" },
