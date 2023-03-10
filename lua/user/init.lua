@@ -1,5 +1,5 @@
 -- https://github.com/AstroNvim/AstroNvim/blob/f7d87bf55afaacc0a187b14da5b85d5da79d82be/lua/user_example/init.lua
- -- All configuration changes should go inside of the table below
+-- All configuration changes should go inside of the table below
 
 -- You can think of a Lua "table" as a dictionary like data structure the
 -- normal format is "key = value". These also handle array like data structures
@@ -46,35 +46,25 @@
 --   keymaps = true, -- default true
 -- }
 
-
-
 local config = {
-
-
-
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "main", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
+    remote = "origin",   -- remote to use
+    channel = "stable",  -- "stable" or "nightly"
+    version = "latest",  -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "main",     -- branch name (NIGHTLY ONLY)
+    commit = nil,        -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil,   -- nil, true, false (nil will pin plugins on stable only)
     skip_prompts = false, -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
     auto_reload = false, -- automatically reload and sync packer after a successful update
-    auto_quit = false, -- automatically quit the current session after a successful update
+    auto_quit = false,   -- automatically quit the current session after a successful update
     -- remotes = { -- easily add new remotes to track
     --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
     --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
     --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
     -- },
   },
-
-  -- Set colorscheme to use
-  -- colorscheme = "default_theme",
-  colorscheme = "gruvbox",
-  
   -- Add highlight groups in any theme
   highlights = {
     -- init = { -- this table overrides highlights in all themes
@@ -84,37 +74,33 @@ local config = {
     --   Normal = { bg = "#000000" },
     -- },
   },
-
-
-
   -- set vim options here (vim.<first_key>.<second_key> = value)
   options = {
     opt = {
       -- set to true or false etc.
       relativenumber = true, -- sets vim.opt.relativenumber
-      number = true, -- sets vim.opt.number
-      spell = false, -- sets vim.opt.spell
+      number = true,      -- sets vim.opt.number
+      spell = false,      -- sets vim.opt.spell
       signcolumn = "yes", -- sets vim.opt.signcolumn to auto
-      wrap = false, -- sets vim.opt.wrap
-      tabstop = 4, -- Number of space in a tab
-      shiftwidth = 4, -- Number of space inserted for indentation
-      smarttab = true, 
-      expandtab = true, -- Enable the use of space in tab
-      copyindent = true, 
+      wrap = false,       -- sets vim.opt.wrap
+      tabstop = 4,        -- Number of space in a tab
+      shiftwidth = 4,     -- Number of space inserted for indentation
+      smarttab = true,
+      expandtab = true,   -- Enable the use of space in tab
+      copyindent = true,
       foldenable = false,
       -- foldopen='all',
-
     },
     g = {
-      mapleader = " ", -- sets vim.g.mapleader
-      autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
-      cmp_enabled = true, -- enable completion at start
-      autopairs_enabled = true, -- enable autopairs at start
-      diagnostics_enabled = true, -- enable diagnostics at start
+      mapleader = " ",                -- sets vim.g.mapleader
+      autoformat_enabled = true,      -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+      cmp_enabled = true,             -- enable completion at start
+      autopairs_enabled = true,       -- enable autopairs at start
+      diagnostics_enabled = true,     -- enable diagnostics at start
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
-      icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+      icons_enabled = true,           -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
       ui_notifications_enabled = true, -- disable notifications when toggling UI elements
-      heirline_bufferline = false, -- enable new heirline based bufferline (requires :PackerSync after changing)
+      heirline_bufferline = false,    -- enable new heirline based bufferline (requires :PackerSync after changing)
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -141,7 +127,6 @@ local config = {
     "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
     "    ██   ████   ████   ██ ██      ██",
   },
-
   -- Default theme configuration
   default_theme = {
     -- Modify the color palette for the default theme
@@ -150,7 +135,7 @@ local config = {
       bg = "#1e222a",
     },
     highlights = function(hl) -- or a function that returns a new table of colors to set
-      local C = require "default_theme.colors"
+      local C = require("default_theme.colors")
 
       hl.Normal = { fg = C.fg, bg = C.bg }
 
@@ -185,13 +170,11 @@ local config = {
       ["which-key"] = true,
     },
   },
-
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
     underline = true,
   },
-
   -- Extend LSP configuration
   lsp = {
     -- enable servers that you already have installed without mason
@@ -234,26 +217,26 @@ local config = {
 
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
-    	pylsp = {
-  	      settings = {
-    	    pylsp = {
-             plugins = {
-               rope_autoimport = {
-                 enabled = true,
-                 memory = true,
+      pylsp = {
+        settings = {
+          pylsp = {
+            plugins = {
+              rope_autoimport = {
+                enabled = true,
+                memory = true,
+              },
+              rope_completion = {
+                enabled = true,
+                eager = false,
+              },
+              pycodestyle = {
+                maxLineLength = 120,
+                ignore = { "W293" },
+              },
+            },
+          },
         },
-               rope_completion = {
-                 enabled = true,
-                 eager = false,
-        },
-               pycodestyle = {
-                 maxLineLength = 120,
-                 ignore = {'W293'}
-        }
-      }
-    }
-  }
-}
+      },
       -- example for addings schemas to yamlls
       -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
       --   settings = {
@@ -268,7 +251,6 @@ local config = {
       -- },
     },
   },
-
   -- Mapping data with "desc" stored directly by vim.keymap.set().
   --
   -- Please use this mappings table to set keyboard mapping since this is the
@@ -285,31 +267,32 @@ local config = {
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-      ["<leader>rr"] = { ":term venv/bin/python3 '%'<cr>", desc = "Run python file"},
-      ["<leader>rc"] = { ":bd!<cr>", desc = "Close buffer without save"},
-      ["<leader>rs"] = { ":ToggleTerm size=60 direction=vertical<cr>", desc = "Open terminal"},
+      ["<leader>rr"] = { ":term venv/bin/python3 '%'<cr>", desc = "Run python file" },
+      ["<leader>rc"] = { ":bd!<cr>", desc = "Close buffer without save" },
+      ["<leader>rs"] = { ":ToggleTerm size=60 direction=vertical<cr>", desc = "Open terminal" },
     },
     t = {
       -- setting a mapping to false will disable it
       -- ["<esc>"] = false,
     },
   },
-
   -- Configure plugins
   plugins = {
     init = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
-        -- "morhetz/gruvbox",
-        {"ellisonleao/gruvbox.nvim",
+      -- "morhetz/gruvbox",
+      {
+        "ellisonleao/gruvbox.nvim",
         config = function()
-            require('gruvbox').setup()
-        end},
-              -- You can also add new plugins here as well:
+          require("user/configs/gruvbox")
+        end,
+      },
+      -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
-        { "aveplen/ruscmd.nvim" },
-        { "iamcco/markdown-preview.nvim" },
+      { "aveplen/ruscmd.nvim" },
+      { "iamcco/markdown-preview.nvim" },
       -- { 'mfussenegger/nvim-dap-python' },
       -- {
       --   "ray-x/lsp_signature.nvim",
@@ -347,23 +330,26 @@ local config = {
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-      -- ensure_installed = { "sumneko_lua" },
+      ensure_installed = { "sumneko_lua", "pyright" },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
-      -- ensure_installed = { "prettier", "stylua" },
+      ensure_installed = { "prettier", "prettierd", "stylua", "flake8", "black", "djlint" },
     },
     ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
-      -- ensure_installed = { "python" },
+      ensure_installed = { "python", "debugpy" },
     },
   },
+  -- Set colorscheme to use
+  colorscheme = "default_theme",
+  -- colorscheme = "gruvbox",
 
   -- LuaSnip Options
   luasnip = {
     -- Extend filetypes
     filetype_extend = {
-        -- htmldjango = { "html" },
-        html = { "htmldjango" },
+      -- htmldjango = { "html" },
+      html = { "htmldjango" },
       -- javascript = { "javascriptreact" },
     },
     -- Configure luasnip loaders (vscode, lua, and/or snipmate)
@@ -372,7 +358,6 @@ local config = {
       paths = {},
     },
   },
-
   -- CMP Source Priorities
   -- modify here the priorities of default cmp sources
   -- higher value == higher priority
@@ -387,7 +372,6 @@ local config = {
       path = 250,
     },
   },
-
   -- Customize Heirline options
   heirline = {
     -- -- Customize different separators between sections
@@ -413,7 +397,6 @@ local config = {
     --   },
     -- },
   },
-
   -- Modify which-key registration (Use this with mappings table in the above.)
   ["which-key"] = {
     -- Add bindings which show up as group name
@@ -429,33 +412,32 @@ local config = {
       },
     },
   },
-
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+    vim.opt.foldmethod = "syntax"
+    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     -- autocmd autocmd BufWinLeave *.* mkview
     vim.api.nvim_create_augroup("folding", {})
     vim.api.nvim_create_autocmd("BufWinLeave", {
-        desc = "Save fold",
-        group = "folding",
-        pattern = "*.*",
-        command = "mkview",
+      desc = "Save fold",
+      group = "folding",
+      pattern = "*.*",
+      command = "mkview",
     })
     vim.api.nvim_create_autocmd("BufWinEnter", {
-        desc = "Load fold",
-        group = "folding",
-        pattern = "*.*",
-        command = "silent! loadview",
+      desc = "Load fold",
+      group = "folding",
+      pattern = "*.*",
+      command = "silent! loadview",
     })
     vim.api.nvim_create_augroup("filetype", {})
     vim.api.nvim_create_autocmd("BufWinEnter", {
-        desc = "Change filetype html -> htmldjango",
-        group = "filetype",
-        pattern = "*.html",
-        command = "set filetype=htmldjango",
+      desc = "Change filetype html -> htmldjango",
+      group = "filetype",
+      pattern = "*.html",
+      command = "set filetype=htmldjango",
     })
     -- autocmd BufWinEnter *.* silent loadview
     -- Set up custom filetypes
