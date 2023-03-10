@@ -1,10 +1,10 @@
 #!/bin/bash
 cat <<EOT>> ./.flake8
 [flake8]
-ignore = W293, W391, E203
+ignore = W293, W391, E203, W503
 max-line-length = 120
 inline-quotes = "
-exclude = .git, __pycache__, env, venv, .venv
+exclude = .git, __pycache__, env, venv, .venv, myvenv
 EOT
 echo " "
 echo "----------"
@@ -13,6 +13,8 @@ echo ".flake8 DONE"
 cat <<EOT>> ./pyproject.toml
 [tool.black]
 line-length = 120
+[tool.isort]
+profile = "black"
 EOT
 echo "pyproject.toml DONE"
 
