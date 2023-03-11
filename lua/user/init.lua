@@ -250,6 +250,10 @@ local config = {
 			["<leader>rr"] = { ":term venv/bin/python3 '%'<cr>", desc = "Run python file" },
 			["<leader>rc"] = { ":bd!<cr>", desc = "Close buffer without save" },
 			["<leader>rs"] = { ":ToggleTerm size=60 direction=vertical<cr>", desc = "Open terminal" },
+			["<leader>snp"] = {
+				":! bash ~/.config/nvim/lua/user/user_scripts/project_settings_generator.sh",
+				desc = "generate venv + django, .flake8, pyprojec.toml",
+			},
 		},
 		t = {
 			-- setting a mapping to false will disable it

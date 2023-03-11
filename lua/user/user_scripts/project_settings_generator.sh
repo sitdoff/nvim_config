@@ -8,7 +8,7 @@ exclude = .git, __pycache__, env, venv, .venv, myvenv
 EOT
 echo " "
 echo "----------"
-echo ".flake8 DONE"
+echo ".flake8 - DONE"
 
 cat <<EOT>> ./pyproject.toml
 [tool.black]
@@ -16,7 +16,7 @@ line-length = 120
 [tool.isort]
 profile = "black"
 EOT
-echo "pyproject.toml DONE"
+echo "pyproject.toml - DONE"
 
 cat <<EOT>> ./.gitignore
 /env
@@ -27,7 +27,14 @@ cat <<EOT>> ./.gitignore
 .flake8
 pyproject.toml
 EOT
-echo ".gitignore DONE"
+echo ".gitignore - DONE"
+
+python3 -m venv venv
+echo "venv - DONE!"
+
+venv/bin/python -m pip install django
+echo "Django - DONE!"
+
 echo "----------"
 echo " "
 
